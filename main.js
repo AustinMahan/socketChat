@@ -15,7 +15,7 @@ app.use(cors())
 var server = http.createServer(app);
 var io = Socket(server);
 
-app.use(Express.static('public'));
+// app.use(Express.static('public'));
 
 var messeges = []
 
