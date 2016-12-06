@@ -23,12 +23,12 @@ io.on('connection', function (socket) {
   console.log('user connected');
 
   socket.on('getMsgs', function() {
-    socket.emit('msgs', messeges)
+    io.emit('msgs', messeges)
   })
 
   socket.on('sending', function (data) {
     messeges.push(data)
-    socket.emit('msgs', messeges);
+    io.emit('msgs', messeges);
   });
 });
 
