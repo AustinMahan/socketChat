@@ -1,7 +1,8 @@
-var app = require('express')();
+var Express = require('express');
 var Socket = require('socket.io');
 var http = require('http');
 
+var app = Express();
 var server = http.createServer(app);
 var io = Socket(server);
 
@@ -11,7 +12,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
 var messeges = []
 
 io.on('connection', function (socket) {
