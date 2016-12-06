@@ -1,10 +1,12 @@
-var app = require('express')();
-var cors = require('cors')
-app.use(cors)
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var Express = require('express');
+var Socket = require('socket.io');
+var http = require('http');
 
-server.listen(process.env.PORT || 8080);
+var app = Express();
+var server = http.createServer(app);
+var io = Socket(server);
+
+app.use(Express.static('public'));
 
 var messeges = []
 
@@ -20,3 +22,8 @@ io.on('connection', function (socket) {
     socket.emit('msgs', messeges);
   });
 });
+
+var port = process.env.PORT || 8080;
+server.listen(port, function(){
+  console.log('Now listening on port: ' + port);
+})
