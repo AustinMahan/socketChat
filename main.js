@@ -3,15 +3,18 @@ var Socket = require('socket.io');
 var http = require('http');
 
 var app = Express();
-var server = http.createServer(app);
-var io = Socket(server);
 
-app.use(Express.static('public'));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+var server = http.createServer(app);
+var io = Socket(server);
+
+app.use(Express.static('public'));
+
 var messeges = []
 
 io.on('connection', function (socket) {
