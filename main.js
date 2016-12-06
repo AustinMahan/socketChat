@@ -4,8 +4,7 @@ var server = require('http').Server(app);
 
 
 server.listen(8080);
-server.use(cors)
-var io = require('socket.io')(server);
+var io = require('socket.io')(server, {'Access-Control-Allow-Origin':'*'});
 var messeges = []
 
 io.on('connection', function (socket) {
