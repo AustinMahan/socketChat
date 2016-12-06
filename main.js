@@ -1,12 +1,14 @@
-var app = require('express')();
-var cors = require('cors')
-var server = require('http').Server(app);
-
-
-server.listen(8080);
-var io = require('socket.io')(server, {origins:'*'});
-var messeges = []
-
+var express = require('express');
+var app = express();
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST");
+  next();
+});
+var server = http.createServer(app);
+io = socketio.listen(server, {log:false, origins:'*:*'});
 io.on('connection', function (socket) {
   console.log('user connected');
 
