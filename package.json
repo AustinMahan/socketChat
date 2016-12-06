@@ -7,6 +7,7 @@
     "test": "./node_modules/mocha/bin/_mocha"
   },
   "dependencies": {
+    "cors": "^2.8.1",
     "dotenv": "^2.0.0",
     "express": "~4.13.4",
     "socket.io": "^1.7.1"
